@@ -1,0 +1,8 @@
+{
+  "name": "EmberCasters",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "bootstrap",
+    "jquery": "~2.1.0"
+  }
+}
