@@ -1,3 +1,6 @@
 {
-  "name":"EmberCasters"
+  "name": "EmberCasters",
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
 }
