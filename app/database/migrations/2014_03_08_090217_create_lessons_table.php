@@ -14,6 +14,9 @@ class CreateLessonsTable extends Migration {
 	{
         Schema::create('lessons', function(Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->text('embed_code');
+            $table->text('description');
 			$table->timestamps();
         });
 	}
