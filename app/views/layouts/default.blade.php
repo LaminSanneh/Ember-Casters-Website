@@ -56,9 +56,18 @@
         </div>
     </div>
 </div>
-@yield('body')
+<div class="container-fluid">
+    <div class="row">
+        <div class="md-col-8 md-col-offset-2">
+            @yield('body')            
+        </div>
+
+    </div>
+</div>
 </div>
 {{HTML::script(URL::asset('js/jquery.min.js'))}}
 {{HTML::script(URL::asset('js/bootstrap.min.js'))}}
+{{HTML::script(URL::asset('js/jquery.fitvids.js'))}}
+{{HTML::script(URL::asset('js/main.js'))}}
 </body>
 </html>
