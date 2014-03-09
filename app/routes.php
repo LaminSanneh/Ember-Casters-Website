@@ -13,5 +13,12 @@
 
 Route::group(array('namespace' => 'EmberCasters\Modules\PublicArea\Controllers'), function(){
     Route::get('/', array('as' => 'home', 'uses' => 'PublicController@home'));
+    
 });
+
+Route::group(array('namespace' => 'EmberCasters\Modules\Admin\Controllers', 'prefix' => 'admin'), function(){
+    Route::resource('lessons', 'LessonsController');
+});
+
+
 

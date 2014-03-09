@@ -1,6 +1,7 @@
 {
   "name": "EmberCasters",
   "dependencies": {
-    "bootstrap": "~3.1.1"
+    "bootstrap": "~3.1.1",
+    "FitVids": "1.1.0"
   }
 }
