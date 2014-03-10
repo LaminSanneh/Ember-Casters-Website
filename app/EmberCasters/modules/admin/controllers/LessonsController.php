@@ -2,6 +2,9 @@
 
 namespace EmberCasters\Modules\Admin\Controllers;
 use \View as View;
+use \Redirect as Redirect;
+use \EmberCasters\Models\Lesson as Lesson;
+use \Input as Input;
 class LessonsController extends \BaseController {
 
 	/**
@@ -11,7 +14,8 @@ class LessonsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('admin.lessons.index');
+        $lessons = Lesson::all();
+		return View::make('admin.lessons.index')->with(compact('lessons'));
 	}
 
 	/**
@@ -21,7 +25,8 @@ class LessonsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+        $lesson = new Lesson();
+		return View::make('admin.lessons.create')->with(compact('lesson'));
 	}
 
 	/**
@@ -31,7 +36,14 @@ class LessonsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$data = Input::only('title','description','embed_code');
+        $lesson = Lesson::create($data);
+
+        if($lesson){
+            return redirect::route('admin.lessons.index');
+        }
+
+        return View::make('admin.lessons.create')->with('lesson', (object)$data);
 	}
 
 	/**
@@ -53,7 +65,8 @@ class LessonsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $lesson = Lesson::find($id);
+		return View::make('admin.lessons.edit')->with(compact('lesson'));
 	}
 
 	/**
@@ -64,7 +77,14 @@ class LessonsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Input::only('title','description','embed_code');
+        $lesson = Lesson::find($id);
+
+        if($lesson->update($data)){
+            return Redirect::route('admin.lessons.index');
+        }
+
+        return View::make('admin.lessons.edit')->with(compact('lesson'));
 	}
 
 	/**
@@ -75,7 +95,12 @@ class LessonsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if(Lesson::destroy($id)){
+            return Redirect::route('admin.lessons.index');
+        }
+
+        $lesson = Lesson::find($id);
+        return View::make('admin.lessons.edit')->with(compact('lesson'));
 	}
 
 }

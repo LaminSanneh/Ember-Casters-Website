@@ -1,6 +1,7 @@
 <?php
 namespace EmberCasters\Modules\PublicArea\Controllers;
 use \View as View;
+use EmberCasters\Models\Lesson as Lesson;
 class PublicController extends \BaseController {
 
 	/**
@@ -10,71 +11,21 @@ class PublicController extends \BaseController {
 	 */
 	public function home()
 	{
-		return View::make('publicarea.home');
+        $lessons = Lesson::all();
+        $lesson = Lesson::first();
+
+        return View::make('publicarea.home')->with(compact('lesson','lessons'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+    /**
+     * View a single lesson
+     */
+    public function viewLesson($id){
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+        $lessons = Lesson::all();
+        $lesson = Lesson::find($id);
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+        return View::make('publicarea.public.viewLesson')->with(compact('lesson','lessons'));
+    }
 
 }
