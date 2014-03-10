@@ -24,6 +24,9 @@
             <div class="row lesson-video-container">
                 {{$lesson->embed_code}}
             </div>
+            <div class="lesson-description">
+                {{$lesson->description}}
+            </div>
         </div>
     </div>
 </div>
